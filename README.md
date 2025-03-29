@@ -17,10 +17,14 @@
 3) Запуск командой uvicorn app.main:app
 4) Команда /start откроет главное меню
 5) База данных пустая, нужно загрузить excel-файл с источниками, ссылка на готовый ниже:
+
+   
 [list_sources.xlsx](https://github.com/user-attachments/files/19522476/list_sources.xlsx)
+
+
 10 страниц сайтов обходит на моем ПК за ~60-70 секунд.
 
-Стек: FastAPI, uvicorn, aiogram, sqlalchemy, aiosqlite, alembic, pandas, pydantic, pydantic_settings, selenium, webdriver_manager
+Стек: FastAPI, uvicorn, aiogram, sqlalchemy, aiosqlite, alembic, pandas, , openpyxl, pydantic, pydantic_settings, selenium, webdriver_manager
 
 
 
