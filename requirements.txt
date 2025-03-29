@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+aiogram
+pandas
+sqlalchemy
+aiosqlite
+pydantic
+alembic
+pydantic_settings
+selenium
+webdriver_manager
