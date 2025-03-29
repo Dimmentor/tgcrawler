@@ -67,11 +67,10 @@ async def get_average_price(sources):
                     total_price += price_float
                     count += 1
                     results.append(
-                        f"Цена на сайте {source_item.title}: {int(price_float)} р.")
-            except ValueError as e:
-                logging.error(f"Ошибка при выгрузке: {e}")
+                        f"Цена на сайте {source_item.title}: {price_float} р.")
+
             except Exception as e:
-                logging.error(f"Неизвестная ошибка при выгрузке: {e}")
+                logging.error(f"Ошибка при выгрузке: {e}")
 
     average_price = total_price / count if count > 0 else 0
     return results, average_price

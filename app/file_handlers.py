@@ -41,7 +41,7 @@ async def handle_excel(message: types.Message, bot: Bot, session: AsyncSession):
                 continue
 
             await add_source_to_db(session, title, url, xpath)
-            await message.answer(f"Сайт успешно добавлен в БД: {title}, {url}, {xpath}")
+            await message.answer(f"Сайт успешно добавлен в БД: {title}, {url}")
 
         if not_added:
             await message.answer("\n".join(not_added))
