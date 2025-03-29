@@ -11,7 +11,7 @@ from app.database import async_session_maker
 from app.models import Source
 from app.crawler import get_average_price
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 bot = Bot(token=settings.BOT_TOKEN)
 dp = Dispatcher()
@@ -19,7 +19,8 @@ dp = Dispatcher()
 
 @dp.message(Command('start'))
 async def cmd_start(message: types.Message):
-    await message.answer("Приветствую! Я вывожу цены в книжных магазинах и высчитываю среднюю цену на книгу 'Гарри Поттер и Философский камень'.",
+    await message.answer('''Приветствую! Я вывожу цены в книжных магазинах
+и высчитываю среднюю цену на книгу 'Гарри Поттер и Философский камень'.''',
                          reply_markup=main_keyboard())
 
 
@@ -63,7 +64,7 @@ async def get_prices(message: types.Message):
     elapsed_time = end_time - start_time
 
     response_message = "\n".join(results) + f"\nСредняя цена на товары: {int(average_price)} р."
-    response_message += f"\nВремя выполнения операции: {elapsed_time:.2f} секунд."  # Добавляем время выполнения
+    response_message += f"\nВремя выполнения операции: {elapsed_time:.2f} секунд."
     await message.answer(response_message)
 
 

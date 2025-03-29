@@ -24,7 +24,7 @@ async def crawling_prices(url: str, xpath: str) -> float:
 
     try:
         driver.get(url)
-        row_data = WebDriverWait(driver, 3).until(
+        row_data = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, xpath))
         )
         price_text = row_data.text.strip()
@@ -33,6 +33,9 @@ async def crawling_prices(url: str, xpath: str) -> float:
         logging.error(f"Ошибка при выгрузке {url}: {e}")
     finally:
         driver.quit()
+
+    if price is None:
+        logging.warning(f"Не удалось получить цену с {url}")
     return price
 
 
@@ -53,8 +56,12 @@ async def get_average_price(sources):
 
     # Вложенная функция для запуска краулера в отдельных потоках
     def run_crawling(source):
-        price = asyncio.run(crawling_prices(source.url, source.xpath))
-        return price, source
+        try:
+            price = asyncio.run(crawling_prices(source.url, source.xpath))
+            return price, source
+        except Exception as e:
+            logging.error(f"Ошибка при выгрузке {source.url}: {e}")
+            return "Сайт недоступен", source
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         loop = asyncio.get_event_loop()
@@ -62,12 +69,15 @@ async def get_average_price(sources):
 
         for future in asyncio.as_completed(futures):
             try:
-                price_float, source_item = await future
-                if price_float is not None:
-                    total_price += price_float
+                price_result, source_item = await future
+                if isinstance(price_result, float):
+                    total_price += price_result
                     count += 1
                     results.append(
-                        f"Цена на сайте {source_item.title}: {price_float} р.")
+                        f"Цена на сайте {source_item.title}: {price_result} р.")
+                else:
+                    results.append(
+                        f"Цена на сайте {source_item.title}: {price_result}")
 
             except Exception as e:
                 logging.error(f"Ошибка при выгрузке: {e}")
