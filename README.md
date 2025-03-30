@@ -19,12 +19,13 @@
 5) База данных пустая, нужно загрузить excel-файл с источниками, ссылка на готовый ниже:
 
    
-[list_sources2.xlsx](https://github.com/user-attachments/files/19525125/list_sources2.xlsx)
+[list_sources2.xlsx](https://github.com/user-attachments/files/19525337/list_sources2.xlsx)
 PS: сайты обновляют свои xpath, если бот не смог достучаться на какие-либо сайты, значит xpath необходимо обновить 
 
 10 страниц сайтов обходит на моем ПК за ~60-70 секунд, при условии, если все xpath доступны.
 
 Стек: FastAPI, uvicorn, aiogram, sqlalchemy, aiosqlite, alembic, pandas, , openpyxl, pydantic, pydantic_settings, selenium, webdriver_manager
+
 
 
 
