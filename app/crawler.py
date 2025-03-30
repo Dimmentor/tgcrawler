@@ -19,7 +19,7 @@ async def crawling_prices(url: str, xpath: str) -> float:
     options.add_argument('--ignore-ssl-errors')
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("pageLoadStrategy=none")
+
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     price = None
