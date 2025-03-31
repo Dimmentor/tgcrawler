@@ -13,10 +13,9 @@
 Бот - @Test666Crawler_bot. В .env файле вписаны собственные токен и id разработчика. При желании можно поменять на свои или оставить как есть.
 
 1) Установите зависимости из файла requirements.txt (pip install -r requirements.txt)
-2) Для подгрузки цен необходимо установить ChromeDriver 134.0.6998.165
-3) Запуск командой uvicorn app.main:app
-4) Команда /start откроет главное меню
-5) База данных пустая, нужно загрузить excel-файл с источниками, ссылка на готовый ниже:
+2) Запуск командой uvicorn app.main:app
+3) Команда /start откроет главное меню
+4) База данных пустая, нужно загрузить excel-файл с источниками, ссылка на готовый ниже:
 
    
 [list_sources2.xlsx](https://github.com/user-attachments/files/19525337/list_sources2.xlsx)
@@ -24,7 +23,7 @@ PS: сайты обновляют свои xpath, если бот не смог 
 
 10 страниц сайтов обходит на моем ПК за ~60-70 секунд, при условии, если все xpath доступны.
 
-Стек: FastAPI, uvicorn, aiogram, sqlalchemy, aiosqlite, alembic, pandas, , openpyxl, pydantic, pydantic_settings, selenium, webdriver_manager
+Стек: FastAPI, uvicorn, aiogram, sqlalchemy, aiosqlite, alembic, pandas, , openpyxl, pydantic, pydantic_settings, selenium
 
 
 
